@@ -1,0 +1,102 @@
+Stock firmware: T210RUEU0COI1
+Stock files selected: 268
+Missing existing vendor entries: 79
+Added dependency files: 13
+
+MISSING (not included)
+bin/abcc -> system/bin/abcc
+bin/amixer -> system/bin/amixer
+bin/aplay -> system/bin/aplay
+bin/bootchecker -> system/bin/bootchecker
+bin/dttexe -> system/bin/dttexe
+bin/FMRadioServer -> system/bin/FMRadioServer
+bin/ionsyx -> system/bin/ionsyx
+bin/mrvl_dut -> system/bin/mrvl_dut
+bin/mrvl_dut.sh -> system/bin/mrvl_dut.sh
+bin/p2p_supplicant -> system/bin/p2p_supplicant
+bin/powerdaemon -> system/bin/powerdaemon
+bin/ppd_cmd -> system/bin/ppd_cmd
+bin/serial_client_test -> system/bin/serial_client_test
+bin/STUpdateTool_V4_4R -> system/bin/STUpdateTool_V4_4R
+bin/system_server -> system/bin/system_server
+bin/usr_path_ctrl -> system/bin/usr_path_ctrl
+bin/wlandutservice.sh -> system/bin/wlandutservice.sh
+etc/firmware/mrvl/revision_ve -> system/etc/firmware/mrvl/revision_ve
+etc/firmware/mrvl/txpwrlimit_cfg.conf_ve -> system/etc/firmware/mrvl/txpwrlimit_cfg.conf_ve
+etc/firmware/mrvl/WlanCalData_ext.conf_ve -> system/etc/firmware/mrvl/WlanCalData_ext.conf_ve
+etc/permissions/android.hardware.bluetooth_le.xml -> system/etc/permissions/android.hardware.bluetooth_le.xml
+etc/permissions/android.hardware.sensor.accelerometer.xml -> system/etc/permissions/android.hardware.sensor.accelerometer.xml
+etc/permissions/android.hardware.sensor.compass.xml -> system/etc/permissions/android.hardware.sensor.compass.xml
+etc/permissions/android.hardware.sensor.light.xml -> system/etc/permissions/android.hardware.sensor.light.xml
+etc/permissions/android.hardware.wifi.direct.xml -> system/etc/permissions/android.hardware.wifi.direct.xml
+etc/permissions/android.hardware.wifi.xml -> system/etc/permissions/android.hardware.wifi.xml
+etc/permissions/handheld_core_hardware.xml -> system/etc/permissions/handheld_core_hardware.xml
+etc/permissions/tablet_core_hardware.xml -> system/etc/permissions/tablet_core_hardware.xml
+etc/ams_list.xml -> system/etc/ams_list.xml
+etc/backup.conf -> system/etc/backup.conf
+etc/dbus.conf -> system/etc/dbus.conf
+etc/mrvl_agps_default.conf -> system/etc/mrvl_agps_default.conf
+etc/mrvl_gps_platform.conf -> system/etc/mrvl_gps_platform.conf
+etc/MSLConfig.txt -> system/etc/MSLConfig.txt
+etc/ov5647_scene_tuning.data -> system/etc/ov5647_scene_tuning.data
+etc/ov5647_still_tuning.data -> system/etc/ov5647_still_tuning.data
+etc/ov5647_video_tuning.data -> system/etc/ov5647_video_tuning.data
+etc/plmn_se13.bin -> system/etc/plmn_se13.bin
+etc/powerdaemon.xml -> system/etc/powerdaemon.xml
+etc/powerdaemon_z3.xml -> system/etc/powerdaemon_z3.xml
+etc/pxa_testcfg.ini -> system/etc/pxa_testcfg.ini
+etc/rom.bin -> system/etc/rom.bin
+etc/spn-conf.xml -> system/etc/spn-conf.xml
+etc/wifi/p2p_supplicant.conf -> system/etc/wifi/p2p_supplicant.conf
+lib/lib_SA_GoogleFX_ver119h.so -> system/lib/lib_SA_GoogleFX_ver119h.so
+lib/lib_SamsungRec_V03011b.so -> system/lib/lib_SamsungRec_V03011b.so
+lib/libagps_hal.so -> system/lib/libagps_hal.so
+lib/libAndroidEvent.so -> system/lib/libAndroidEvent.so
+lib/libcpufreq.so -> system/lib/libcpufreq.so
+lib/libcpufreqinterface.so -> system/lib/libcpufreqinterface.so
+lib/libhpbsnmp.so -> system/lib/libhpbsnmp.so
+lib/libhpcurl.so -> system/lib/libhpcurl.so
+lib/libhpexpat.so -> system/lib/libhpexpat.so
+lib/libhpmpcrypto.so -> system/lib/libhpmpcrypto.so
+lib/libhpmpssl.so -> system/lib/libhpmpssl.so
+lib/libion_pxa.so -> system/lib/libion_pxa.so
+lib/libOrgan.so -> system/lib/libOrgan.so
+lib/libphysicsmsc.so -> system/lib/libphysicsmsc.so
+lib/libpmemhelper.so -> system/lib/libpmemhelper.so
+lib/libppeffectLH.so -> system/lib/libppeffectLH.so
+lib/libscreenrecorder.so -> system/lib/libscreenrecorder.so
+lib/libSDRMInvLH.so -> system/lib/libSDRMInvLH.so
+lib/libsocketsvr.so -> system/lib/libsocketsvr.so
+lib/libsysfs.so -> system/lib/libsysfs.so
+lib/libsysfs_attribute.so -> system/lib/libsysfs_attribute.so
+lib/libsystem_server.so -> system/lib/libsystem_server.so
+lib/libwvdrm_L3.so -> system/lib/libwvdrm_L3.so
+lib/libWVStreamControlAPI_L3.so -> system/lib/libWVStreamControlAPI_L3.so
+usr/keylayout/88pm800_hook_vol.kl -> system/usr/keylayout/88pm800_hook_vol.kl
+usr/keylayout/88pm80x_on.kl -> system/usr/keylayout/88pm80x_on.kl
+usr/keylayout/gpio-keys.kl -> system/usr/keylayout/gpio-keys.kl
+usr/keylayout/sec_touchscreen.kl -> system/usr/keylayout/sec_touchscreen.kl
+xbin/iwevent -> system/xbin/iwevent
+xbin/iwgetid -> system/xbin/iwgetid
+xbin/iwlist -> system/xbin/iwlist
+xbin/iwpriv -> system/xbin/iwpriv
+xbin/iwspy -> system/xbin/iwspy
+xbin/zip -> system/xbin/zip
+xbin/zipalign -> system/xbin/zipalign
+
+ADDED
+system/lib/libomission_avoidance.so
+system/lib/libexfat_utils.so
+system/lib/libdivxdrm.so
+system/lib/libomadrm.so
+system/lib/libplayready_v2.0.so
+system/lib/lib_SA_GoogleFX_ver119k.so
+system/lib/libpowerhintservice.so
+system/lib/lib_SamsungRec_V01006.so
+system/lib/lib_SoundAlive_ver118t.so
+system/lib/libsavscmn.so
+system/lib/libfactoryutil.so
+system/lib/libmsgqueue.so
+system/lib/libphs_log.so
+
+UNRESOLVED DT_NEEDED
