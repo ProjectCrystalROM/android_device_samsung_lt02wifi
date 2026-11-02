@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <!-- The Marvell Bluetooth library connects to the wireless daemon in
+         /data/misc/wifi/sockets, which is accessible to the wifi group. -->
+    <permission name="android.permission.BLUETOOTH_STACK">
+        <group gid="wifi" />
+    </permission>
+</permissions>

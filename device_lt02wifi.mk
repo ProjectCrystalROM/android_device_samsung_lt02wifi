@@ -1,6 +1,15 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+ifeq ($(CRYSTAL_STOCK_FULL),true)
+$(call inherit-product, vendor/samsung/lt02wifi-stockfull/lt02wifi-vendor.mk)
+PRODUCT_PACKAGES += libion
+PRODUCT_PROPERTY_OVERRIDES += ro.crystal.stockgpu=1 ro.crystal.browser_h264_only=1
+else ifeq ($(CRYSTAL_STOCK_GPU),true)
+$(call inherit-product, vendor/samsung/lt02wifi-stockgpu/lt02wifi-vendor.mk)
+PRODUCT_PACKAGES += libion
+else
 $(call inherit-product, vendor/samsung/lt02wifi/lt02wifi-vendor.mk)
+endif
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/lt02wifi/overlay
 
@@ -9,7 +18,6 @@ PRODUCT_CHARACTERISTICS := tablet
 # Enable higher-res drawables while keeping mdpi as primary source
 PRODUCT_AAPT_CONFIG := large mdpi hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
-PRODUCT_LOCALES += mdpi
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -34,7 +42,8 @@ DEFAULT_PROPERTY_OVERRIDES += \
 
 # permissions that we supported
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    $(LOCAL_PATH)/configs/marvell-bluetooth-permissions.xml:system/etc/permissions/marvell-bluetooth-permissions.xml
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -71,8 +80,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/ueventd.pxa988.rc:root/ueventd.pxa988.rc
 
 # Audio
+ifeq ($(CRYSTAL_STOCK_FULL),true)
+# A2DP's control protocol must match the source-built CM Bluetooth stack.
+PRODUCT_PACKAGES += audio.a2dp.default
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
+    vendor/samsung/lt02wifi-stockfull/proprietary/system/etc/audio_policy.conf:system/etc/audio_policy.conf
+else
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+endif
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf
 
 # Product specific Packages
@@ -114,3 +131,10 @@ $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/FwImage/sd8787fw
 $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/sd8787.mk)
 $(call inherit-product-if-exists, vendor/marvell/generic/sd8787/sd8787_modules.mk)
 
+
+# Enable authenticated ADB by default in diagnostic builds.
+ifeq ($(TARGET_BUILD_VARIANT),userdebug)
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=1
+endif

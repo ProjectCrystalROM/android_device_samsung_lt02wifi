@@ -37,12 +37,19 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Flags
 COMMON_GLOBAL_CFLAGS += -DMRVL_HARDWARE
+ifeq ($(CRYSTAL_STOCK_FULL),true)
+COMMON_GLOBAL_CFLAGS += -DCRYSTAL_STOCK_HWC_ABI
+endif
 COMMON_GLOBAL_CFLAGS += -DNO_RGBX_8888
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
 # Kernel
+ifeq ($(CRYSTAL_STOCK_GPU),true)
+TARGET_KERNEL_SOURCE := kernel/samsung/lt02-stockgpu
+else
 TARGET_KERNEL_SOURCE := kernel/samsung/lt02
+endif
 TARGET_KERNEL_CONFIG := kerNole_lt02_defconfig
 
 BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
@@ -100,7 +107,12 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun%d/
 # Graphics
 VSYNC_EVENT_PHASE_OFFSET_NS := 0
 BOARD_HAVE_PIXEL_FORMAT_INFO := true
+# The stock 8290 EGL advertises RGBA; the older configuration used BGRA.
+ifeq ($(CRYSTAL_STOCK_FULL),true)
+BOARD_USE_BGRA_8888 := false
+else
 BOARD_USE_BGRA_8888 := true
+endif
 USE_OPENGL_RENDERER := true
 BOARD_EGL_CFG := device/samsung/lt02wifi/configs/egl.cfg
 
@@ -200,3 +212,6 @@ TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_MAX_BRIGHTNESS := 255
 TW_BRIGHTNESS_PATH := /sys/class/backlight/panel/brightness
+
+# TWRP may identify this Wi-Fi model as lt02.
+TARGET_OTA_ASSERT_DEVICE := lt02,lt02wifi
